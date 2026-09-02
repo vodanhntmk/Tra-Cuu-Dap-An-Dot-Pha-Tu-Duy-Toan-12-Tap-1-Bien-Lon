@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra Cứu Đáp Án Đột Phá Tư Duy 12 Tập 1 - Biển Lớn</title>
+    <!-- ai muốn clone cái web này nhớ ghi đồng tác giả là Biển Lớn nha -->
+    <style>
+        :root {
+            --primary-glow: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            --rgb-border: linear-gradient(45deg, #ff007f, #7928ca, #00f2fe, #4facfe, #ff007f);
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body { 
+            background: #080810;
+            color: #f5f5f7; 
+            padding: 40px 20px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Light Spheres */
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.5;
+            animation: floatGlow 10s infinite alternate ease-in-out;
+        }
+
+        body::before { background: #7928ca; top: -50px; left: -50px; }
+        body::after { background: #00f2fe; bottom: -50px; right: -50px; animation-delay: -5s; }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, 40px) scale(1.2); }
+        }
+
+        .container { 
+            max-width: 750px; 
+            width: 100%; 
+            animation: appleFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        h1 { 
+            text-align: center; 
+            font-size: 2.2rem; 
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #00f2fe, #4facfe, #00f2fe);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+            margin-bottom: 25px;
+        }
+
+        @keyframes shine { to { background-position: 200% center; } }
+
+        /* Quick Navigation Bar */
+        .nav-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            color: #e0e0e0;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #00f2fe;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 242, 254, 0.25);
+        }
+
+        .nav-btn.donate-btn:hover {
+            border-color: #ff007f;
+            box-shadow: 0 6px 15px rgba(255, 0, 127, 0.25);
+        }
+
+        /* Liquid Glass Search Box */
+        .search-card-wrapper {
+            position: relative;
+            border-radius: 16px;
+            padding: 2px;
+            background: var(--rgb-border);
+            background-size: 300% 300%;
+            animation: rgbFlow 6s ease infinite;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes rgbFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .search-box { 
+            display: flex; 
+            gap: 10px; 
+            background: rgba(18, 18, 26, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 8px;
+            border-radius: 14px;
+        }
+
+        input { 
+            flex: 1; 
+            padding: 14px 20px; 
+            font-size: 16px; 
+            border-radius: 10px; 
+            border: none; 
+            background: rgba(255, 255, 255, 0.05); 
+            color: #fff; 
+            outline: none; 
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        input::placeholder { color: #86868b; }
+
+        input:focus { 
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+        }
+
+        button.search-btn { 
+            padding: 14px 28px; 
+            font-size: 15px; 
+            font-weight: 600; 
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            color: #000; 
+            border: none; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+        }
+
+        button.search-btn:hover { 
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.6);
+        }
+
+        button.search-btn:active { transform: scale(0.97); }
+
+        /* Glassmorphism Result Container */
+        .result-card { 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 20px; 
+            padding: 25px; 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            animation: appleSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .result-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #00f2fe;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .img-container { margin-top: 15px; text-align: center; }
+        .img-container p { color: #a1a1a6; font-size: 13px; margin-bottom: 8px; font-weight: 500; }
+        .img-container img { 
+            max-width: 100%; 
+            height: auto; 
+            border-radius: 12px; 
+            margin-bottom: 20px; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .img-container img:hover { transform: scale(1.015); }
+        .no-result { text-align: center; color: #ff453a; font-weight: 500; padding: 20px; }
+
+        /* Modal Ủng Hộ VietQR */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(15px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: appleFadeIn 0.3s ease-out;
+        }
+
+        .modal-card {
+            background: rgba(22, 22, 30, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 25px;
+            max-width: 380px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+
+        .modal-card h3 { color: #ff007f; margin-bottom: 8px; }
+        .modal-card p { font-size: 13px; color: #aaa; margin-bottom: 15px; }
+        .modal-card img { width: 100%; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        
+        .close-btn {
+            position: absolute;
+            top: 12px; right: 15px;
+            background: none; border: none;
+            color: #888; font-size: 20px;
+            cursor: pointer; transition: 0.2s;
+        }
+        .close-btn:hover { color: #fff; }
+
+        /* Apple Animations */
+        @keyframes appleFadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes appleSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>ĐỘT PHÁ TƯ DUY TOÁN 12 TẬP 1</h1>
+    <div class="subtitle">Made by Biển Lớn</div>
+    
+    <!-- Action Bar -->
+    <div class="nav-actions">
+        <a href="https://youtube.com" class="nav-btn">📖 Tra cứu Tập 2 ➔</a>
+        <button class="nav-btn donate-btn" onclick="openDonate()">☕ Ủng hộ tác giả</button>
+    </div>
+
+    <div class="search-card-wrapper">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Nhập mã ID (VD: 110574, 110084...)" onkeyup="if(event.key==='Enter') searchID()">
+            <button class="search-btn" onclick="searchID()">Tìm kiếm</button>
+        </div>
+    </div>
+
+    <div id="result" class="result-card" style="display: none;"></div>
+</div>
+
+<!-- Modal QR Ủng hộ -->
+<div id="donateModal" class="modal-overlay" onclick="closeDonate(event)">
+    <div class="modal-card">
+        <button class="close-btn" onclick="toggleDonateModal(false)">&times;</button>
+        <h3>💖 Ủng Hộ Biển Lớn</h3>
+        <p>Mỗi sự ủng hộ của bạn là động lực để mình tiếp tục duy trì web!</p>
+        <img src="https://api.vietqr.io/image/970422-0876680302-51.jpg?accountName=HA%20DAI%20HAI" alt="QR VietQR Hà Đại Hải">
+    </div>
+</div>
+
+<script>
+    let dbData = [];
+
+    fetch('data.json')
+        .then(res => res.json())
+        .then(data => { dbData = data; })
+        .catch(err => console.error("Chưa thấy file data.json!", err));
+
+    function searchID() {
+        const query = document.getElementById('searchInput').value.trim();
+        const resultDiv = document.getElementById('result');
+
+        if (!query) return;
+
+        const specialIDs = ["1", "2", "3", "4","5","6","7","8","9","0","10","11","12", "36", "37", "38", "3636", "363636", "367", "369", "367369","Biển Lớn", "BIỂN LỚN","biển lớn","bien lon","BIEN LON","Bien Lon", "bienlon","BIENLON","BienLon"];
+
+        resultDiv.style.display = 'block';
+
+        // 1. Đối với ID đặc biệt:
+        if (specialIDs.includes(query)) {
+            resultDiv.innerHTML = `
+                <div class="result-header">📌 Mã bài tập: ${query} (Đặc biệt)</div>
+                <div class="img-container">
+                    <img src="bienlondata/999999.png" alt="Ảnh đặc biệt 999999">
+                </div>
+            `;
+            return;
+        }
+
+        // Tìm bài tập trong dbData dựa trên mã ID nhập vào
+        const item = dbData.find(x => x.id === query);
+
+        // Nếu không tìm thấy bài tập trong data.json
+        if (!item) {
+            resultDiv.innerHTML = `<div class="no-result">❌ Không tìm thấy mã ID <b>${query}</b></div>`;
+            return;
+        }
+
+        // 2. Đối với bài tập thông thường:
+        let imagesHtml = '';
+        if (item.pages === 1) {
+            imagesHtml += `<div class="img-container"><img src="bienlondata/${item.id}.png" alt="Đáp án ${item.id}"></div>`;
+        } else {
+            for (let i = 1; i <= item.pages; i++) {
+                imagesHtml += `
+                    <div class="img-container">
+                        <p>Trang ${i} / ${item.pages}</p>
+                        <img src="bienlondata/${item.id}-${i}.png" alt="Đáp án ${item.id} trang ${i}">
+                    </div>`;
+            }
+        }
+
+        resultDiv.innerHTML = `
+            <div class="result-header">📌 Mã bài tập: ${item.id} (${item.pages} trang)</div>
+            ${imagesHtml}
+        `;
+    }
+
+    function toggleDonateModal(show) {
+        document.getElementById('donateModal').style.display = show ? 'flex' : 'none';
+    }
+
+    function openDonate() {
+        toggleDonateModal(true);
+    }
+
+    function closeDonate(e) {
+        if (e.target.id === 'donateModal') {
+            toggleDonateModal(false);
+        }
+    }
+</script>
+
+</body>
+</html>
