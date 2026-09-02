@@ -10,3 +10,7 @@
 # ***Đây là hình của sách***
 <img width="1300" height="1300" alt="image" src="https://github.com/user-attachments/assets/8639b441-f69c-4095-a3b0-9860dc066dbb" />
 
+# MỘT ĐỜI CỐNG HIẾN VÌ TRI THỨC VIỆT NAM CỦA BIỂN LỚN
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/d29d6e4c-0d85-4660-b470-80778400ba87" />
+
+
